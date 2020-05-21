@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>문제 1 : jQuery</title>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+/* $(function(){
+	setTimeout(function(){
+		// alert(sel.value);
+		alert($("#sel").val());
+	}, 3000);
+}) */
+$(function(){
+	$("#sel").on("click", function(){
+		setTimeout(function(){
+			alert($("#sel").val());
+		}, 1000);
+	})
+})
+</script>
+</head>
+<body>
+<h3>jQuery를 이용하여 select에서 선택된 이름을 3초 후에 alert 창으로 띄우기 <br>
+자바 스크립트의 setTimeout() 이용<br>
+select 태그에 id 속성으로 sel으로 설정</h3>
+<select id="sel">
+<option>딸기</option>
+<option>사과</option>
+<option>복숭아</option>
+<option>포도</option>
+<option>오렌지</option>
+</select>
+</body>
+</html>

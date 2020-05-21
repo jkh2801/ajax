@@ -40,12 +40,18 @@ function listPartStates() {
 	var xmlDoc = ajax.responseXML; // xml 문서를 parsing 과정을 거쳐 DOM 트리 형태로 리턴
 	// xmlDoc : 응답 받은 xml 문서의 dom 객체의 최상단 문서노드 값 저장
 	var States = xmlDoc.getElementsByTagName(requestTag);
+	var list = States[0].getElementsByTagName("state");
 	var divTag = document.getElementById("result");
 	divTag.innerHTML = "서울"+requestType+"구";
-	var list = States[0].getElementsByTagName("state");
 	for (var i = 0; i < list.length; i++) {
 		divTag.innerHTML += "<br>-"+list[i].childNodes[0].nodeValue; // 하위 태그의 값들을 가져와라
 	}
+	/* var allStates = xmlDoc.getElementByTagName("state");
+	for(var i = 0; i < allStates.length; i++){
+		if(allStates[i].parentNode.nodeName == requestTag){
+			divTag.innerHTML += "<br>-"+allStates[i].childNodes[0].nodeValue;
+			}
+	}*/
 }
 </script>
 </head>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Xml 연습</title>
+<script type="text/javascript" src="ajax.js"></script>
+<script type="text/javascript">
+	function doXml() {
+		sendRequest("book.xml", null, xmlresult, "GET");
+	}
+	function xmlresult() {
+		if (ajax.readyState == 4) {
+			if (ajax.status == 200) {
+				xmlcontrol();
+			} else {
+				alert("서버 오류: " + ajax.status + " : " + ajax.statusText)
+			}
+		}
+	}
+	function xmlcontrol() {
+		console.log(ajax.responseText);
+		var xmlDoc = ajax.responseXML; // xml 문서를 parsing 과정을 거쳐 DOM 트리 형태로 리턴
+		// xmlDoc : 응답 받은 xml 문서의 dom 객체의 최상단 문서노드 값 저장
+		var book = xmlDoc.getElementsByTagName("book");
+		var htmldata = "<table border='1'><tr><th>제목</th><th>저자</th><th>가격</th></tr>";
+		var sum = 0;
+		for (var i = 0; i < book.length; i++) {
+			var title = book[i].getElementsByTagName("title")[0].childNodes[0].nodeValue;
+			var author = book[i].getElementsByTagName("author")[0].childNodes[0].nodeValue;
+			var price = book[i].getElementsByTagName("price")[0].childNodes[0].nodeValue;
+			sum += parseInt(price);
+			htmldata += "<tr><td>" + title + "</td><td>" + author
+					+ "</td><td>" + price + "</td></tr>";
+		}
+		htmldata += "<tr><td colspan='3' align='center'>총 "
+				+ book.length + "권 총 가격: "+sum+"</td></tr></table>";
+		resultBody.innerHTML = "<h2>책 정보 보기</h2>";
+		resultBody.innerHTML += htmldata;
+	}
+</script>
+</head>
+<body>
+<input type="button" value="교재 목록" onclick="doXml()">
+	<div id="resultBody"></div>
+</body>
+</html>
