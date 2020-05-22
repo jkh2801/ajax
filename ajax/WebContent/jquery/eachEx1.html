@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>배열객체, each 함수 예제 </title>
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	var arr = [
+		{name : "구디", link : "http://www.goodee.co.kr"},
+		{name : "네이버", link : "http://www.naver.com"},
+		{name : "다음", link : "http://www.daum.com"},
+		{name : "구글", link : "http://www.google.com"}
+	]
+	var output = "";
+	// arr 반복
+	$.each(arr, function(i, item){// i: 인덱스, item: 객체 (this로 변환 가능)
+		output += "<a href='"+this.link+"'>"
+		output += "<h3>"+(i+1)+"."+this.name+"</h3></a>"
+	})
+	$("#arr").html(output);
+	
+	var obj = {name : "홍길동", gender : "남자"};
+	$.extend(obj,{part : "의적", loc : "율도국"})// 객체 멤버 추가
+	output = "";
+	$.each(obj, function(key, value){
+		output += key +":" +value+"<br>";
+	})
+	$("#obj").html(output);
+})
+</script>
+</head>
+<body>
+<div id="arr"></div>
+<div id="obj"></div>
+</body>
+</html>

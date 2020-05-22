@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>css 함수 사용</title>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	var color = ["red", "green", "blue"];
+	/* $("h1").css("color",function(idx){
+		return color[idx]
+	}).css("backgroundColor","pink"); */
+	$("h1").css({"color":function(idx){
+		return color[idx]
+	},"backgroundColor":"pink"});
+})
+</script>
+</head>
+<body>
+<h1>Header_1: red</h1>
+<h1>Header_1: green</h1>
+<h1>Header_1: blue</h1>
+
+</body>
+</html>

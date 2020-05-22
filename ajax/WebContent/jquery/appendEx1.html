@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>동적으로 생성된 태그요소를 화면에 추가하기</title>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("<h1></h1>").html("Hello World").appendTo("body");
+	$("<img></img>").attr("src", "La.jpg").appendTo("body").attr("height", 300).attr("weight",300);
+	
+	var h1 = "<h1>Header1</h1>";
+	var h2 = "<h1>Header2</h1>";
+	$("body").append(h1,h2,h1,h2)
+})
+</script>
+</head>
+<body>
+
+</body>
+</html>

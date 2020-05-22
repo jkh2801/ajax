@@ -28,7 +28,7 @@ ajax.xhr.Request.prototype = {
 			}
 		},
 		send : function() { // 멤버메서드
-			console.log(this);
+			console.log(this); // this : ajax.xhr.Request
 			this.req = this.getXmlHttpRequest(); // XMLHttpRequest 객체를 저장 (ajax 객체)
 			var httpMethod = this.method?this.method:"GET";
 			if (httpMethod != "GET" && httpMethod != "POST") {
