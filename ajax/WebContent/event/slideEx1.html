@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>슬라이드 이미지 만들기</title>
+<style type="text/css">
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+.animation_canvas {
+	overflow: hidden;
+	position: relative;
+	width: 600px;
+	height: 400px;
+}
+
+.slider_panel {
+	width: 3000px;
+	position: relative;
+}
+
+.slider_image {
+	float: left;
+	width: 600px;
+	height: 400px;
+}
+
+.slider_text_panel {
+	position: absolute;
+	top: 100px;
+	left: 50px;
+}
+
+.slider_text {
+	position: absolute;
+	width: 250px;
+	height: 150px;
+}
+
+.control_panel {
+	position: absolute;
+	top: 380px;
+	left: 270px;
+	height: 13px;
+	overflow: hidden;
+}
+
+.control_button {
+	width: 12px;
+	height: 46px;
+	position: relative;
+	float: left;
+	cursor: pointer;
+	background: url('./imgs/point_button.png');
+}
+
+.control_button:hover {
+	top: -16px;
+}
+
+.control_button.select {
+	top: -31px;
+}
+</style>
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$(".control_button").each(function(index) {
+			$(this).attr("idx", index);
+		}).click(function() {
+			var index = $(this).attr("idx");
+			moveSlider(index);
+		})
+		$(".slider_text").css("left",-300).each(function(index) {
+			$(this).attr("idx", index);
+		})
+		moveSlider(0);
+		var idx = 0;
+		var d = 1;
+		setInterval(function(){ // 2초마다 호출해라
+			if(idx == 3) d = -1;
+			if(idx == 0) d = 1;
+			idx += d;
+			moveSlider(idx);
+		}, 2000);
+	})
+	function moveSlider(index){
+		var moveLeft = -(index*600);
+		$(".slider_panel").animate({left:moveLeft},'slow');
+		$(".control_button[idx="+index+"]").addClass("select");
+		$(".control_button[idx!="+index+"]").removeClass("select"); // 나머지는 지워라
+		$(".slider_text[idx="+index+"]").show().animate({
+			left: 0
+		},"slow")
+		$(".slider_text[idx!="+index+"]").hide("slow",function(){
+			$(this).css("left", -300);
+		})
+	}
+</script>
+</head>
+<body>
+<h1>슬라이드 이미지 구현하기</h1>
+<div class="animation_canvas">
+<div class="slider_panel">
+<img src="./imgs/La.jpg" class="slider_image">
+<img src="./imgs/Lesa.png" class="slider_image">
+<img src="./imgs/Lusi.jpg" class="slider_image">
+<img src="./imgs/Sun.jpg" class="slider_image">
+</div>
+<div class="slider_text_panel">
+<div class="slider_text"><h1>La</h1><p>La</p></div>
+<div class="slider_text"><h1 style="color: white;">Lesa</h1><p style="color: white;">Lesa</p></div>
+<div class="slider_text"><h1 style="color: white;">Lusi</h1><p style="color: white;">Lusi</p></div>
+<div class="slider_text"><h1>Sun</h1><p>Sun</p></div>
+</div>
+</div>
+<div class="control_panel">
+<div class="control_button"></div>
+<div class="control_button"></div>
+<div class="control_button"></div>
+<div class="control_button"></div>
+</div>
+</body>
+</html>
