@@ -2,9 +2,57 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>Insert title here</title>
+<title>애니메이션 효과</title>
+<style type="text/css">
+div {
+	width: 50px;
+	height: 50px;
+	background-color: orange;
+	position: relative;
+}
+</style>
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$("#div1").click(function(){
+			var width = $(this).css("width"); // div 가로 길이 리턴
+			var height = $(this).css("height");
+			$(this).animate({
+				width : parseInt(width) + 50,
+				height : parseInt(height) + 50
+			}, 'slow') 
+		})
+		$("#div2").click(function(){
+			$(this).animate({
+				left : "+=50"
+			}, 2000).animate({
+				width : "+=50"
+			}, 2000).animate({
+				height: "+=50"
+			}, 2000)
+		})
+		$("#div3").animate({left: "+=50"}, 2000)
+		$("#div3").animate({width: "+=50"}, 2000)
+		$("#div3").animate({height: "+=50"}, 2000)
+		setTimeout(function(){
+			$("#div3").clearQueue(); // 애니메이트 큐
+			$("#div3").hide(); // 컴포넌트 보이지 않도록 설정
+		}, 6000)
+		// 페이지 시작 이후 7초 이후에 보이도록 설정
+		
+		setTimeout(function() {
+			$("#div3").show(); // 컴포넌트 보이도록 설정
+		}, 7000)
+	})
+</script>
 </head>
 <body>
-
+	<div id="div1"></div>
+	<br>
+	<div id="div2"></div>
+	<br>
+	<div id="div3"></div>
+	<br>
 </body>
 </html>
