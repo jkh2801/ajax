@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>json 연습</title>
+<script type="text/javascript" src="../ajax.js"></script>
+<script type="text/javascript">
+	function doJson() {
+		sendRequest("house.jsp", null, jsonresult, "GET");
+	}
+	function jsonresult() {
+		if (ajax.readyState == 4) {
+			if (ajax.status == 200) {
+				jsoncontrol();
+			} else {
+				alert("서버 오류: " + ajax.status + " : " + ajax.statusText)
+			}
+		}
+	}
+	function jsoncontrol() {
+		console.log(ajax.responseText);
+		var data = ajax.responseText; 
+		var htmldata = "<table border='1'><tr><th>주소</th><th>가격</th><th>특징</th></tr>";
+		var jsondata = JSON.parse(data); // 객체 정보로 저장
+		for (var i = 0; i < jsondata.properties.length; i++) {
+			htmldata += "<tr><td>" + jsondata.properties[i].address + "</td><td>" + jsondata.properties[i].price
+					+ "</td><td>" + jsondata.properties[i].comment + "</td></tr>";
+		}
+		htmldata += "<tr><td colspan='3' align='center'>총 메물 건수: "
+				+ jsondata.properties.length + "</td></tr></table>";
+		resultBody.innerHTML = "<h2>JSON 주택정보</h2>";
+		resultBody.innerHTML += htmldata;
+	}
+</script>
+</head>
+<body>
+	<input type="button" value="json 매물 검색" onclick="doJson()">
+	<div id="resultBody"></div>
+</body>
+</html>

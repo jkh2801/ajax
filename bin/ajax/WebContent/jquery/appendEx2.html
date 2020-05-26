@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>이미지 위치 변경</title>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("img").css("width",250).css("height",250);
+	setInterval(function(){ // 2초마다 호출해라
+		$("img").first().appendTo("body");
+	}, 2000);
+})
+</script>
+</head>
+<body>
+<img src="La.jpg">
+<img src="Lesa.png">
+<img src="Lusi.jpg">
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>html 함수 예제</title>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	/* $("div").html("<h1>Header</h1>");// div 태그에 추가
+	$("div").text("<h1>Header</h1>");// text 추가 */
+	$("div").html(function (idx) {
+		return "<h1>Header-"+(idx+1)+"</h1>";
+	})
+	$("h1").html(function (i,h) { // i: index h: h1태그의 내용
+		return "★"+h+"★";
+	})
+})
+</script>
+</head>
+<body>
+<h1>Header-0</h1>
+<h1>Header-1</h1>
+<h1>Header-2</h1>
+<div>
+</div>
+<div>
+</div>
+<div>
+</div>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Test</title>
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		/* $("input[type=submit]").click(function() {
+			var name = $("#name").val();
+			var password = $("#password").val();
+			alert("name: " + name + "\npassword: " + password);
+			return false;
+		}) */
+		
+		$("#myform").submit(function() {
+			var name = $("#name").val();
+			var password = $("#password").val();
+			alert("name: " + name + "\npassword: " + password);
+			return false;
+		})
+	})
+</script>
+</head>
+<body>
+	제출버튼이 클릭되면 입력된 이름과 비밀번호를 alert 창에 출력하기
+	<form id="myform">
+		이름: <input type="text" name="name" id="name"><br> 비밀번호: <input
+			type="password" name="password" id="password"><br> <input
+			type="submit" value="제출">
+	</form>
+</body>
+</html>

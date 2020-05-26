@@ -6,14 +6,18 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script type="text/javascript">
 $(function(){
-	var star = "";
-	$.each($("h1"), function(i){
-		star += "★";
-		$("h1:eq("+i+")").append(star);
-		$("h1:eq("+i+")").prepend(star);
+	$("h1").html(function (i,h) { // i: index h: h1태그의 내용
+		return star(i+1)+h+star(i+1);
 	})
-		
-	})
+	function star(i){
+		var star = "";
+		for (var j = 0; j < i; j++) {
+			star += "★";
+		}
+		return star;
+	}
+})
+
 </script>
 </head>
 <body>

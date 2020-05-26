@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>클릭시 h1 태그 추가하기</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		var cnt = 1;
+		/* $("#wrap").click(function() {// #wrap 범위 안에서 추가 가능
+			$("<h1></h1>").html(cnt + "-Header").appendTo("#wrap");
+			cnt += 1;
+		}) */
+		/* $("h1").click(function() { // 처음 h1만 추가가능
+			$("<h1></h1>").html(cnt + "-Header").appendTo("#wrap");
+			cnt += 1;
+		}) */ 
+		$(document).on("click"," h1", function() { // h1 태그로 추가가능
+			$("<h1></h1>").html(cnt + "-Header").appendTo("#wrap");
+			cnt += 1;
+		})
+	})
+</script>
+</head>
+<body>
+	<hr>
+	<div id="wrap">
+		<h1>Header</h1>
+	</div>
+	<hr>
+</body>
+</html>

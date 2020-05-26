@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>nth-child, nth-of-type 차이 예제</title>
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$("h2:nth-child(3n)").css("background", "green"); // 전부 센다.
+		$("h2:nth-child(3n+1)").css("background", "yellow");
+		$("h2:nth-child(3n+2)").css("background", "blue");
+		$("h3:nth-of-type(3n)").css("background", "green"); // 나만 센다
+		$("h3:nth-of-type(3n+1)").css("background", "yellow");
+		$("h3:nth-of-type(3n+2)").css("background", "#8b00ff");
+		
+		var colors = ["red", "orange", "yellow", "green", "blue", "navy", "#8b00ff"];
+		/* $("h1").each(function(i){ // i: 인덱스 
+			$(this).css({"background":"pink","color":colors[i]})
+			// this: h1태그
+		}) */
+		$.each(colors, function(i, color){
+			$("h1:eq("+i+")").css({"background":"pink","color":color})
+		})
+	})
+</script>
+</head>
+<body>
+h3 태그 중 홀수번째 노랑바탕, 짝수번째를 파랑바탕으로 변경
+<h3>h3:header_0</h3>
+<h3>h3:header_1</h3>
+<h3>h3:header_2</h3>
+<h3>h3:header_3</h3>
+<h3>h3:header_4</h3>
+<h2>h2:header_0</h2>
+<h2>h2:header_1</h2>
+<h2>h2:header_2</h2>
+<h2>h2:header_3</h2>
+<h2>h2:header_4</h2>
+<h2>h2:header_5</h2>
+<h1>h1:header_1</h1>
+<h1>h1:header_2</h1>
+<h1>h1:header_3</h1>
+<h1>h1:header_4</h1>
+<h1>h1:header_5</h1>
+<h1>h1:header_6</h1>
+<h1>h1:header_7</h1>
+<h1>h1:header_8</h1>
+<h1>h1:header_9</h1>
+<h1>h1:header_10</h1>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>JQUERY 예제1</title>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ // 현재 페이지가 준비가 완료되면
+	$("*").css("color","aqua");
+	$("p").css("color","blue"); // p 태그의 글자색을 파랑색으로 설정
+	$("h1").css("color","red");
+	$(".item").css("color","green");
+	$("#selected").css("color","pink");
+})
+$(function() {// 위와 동일
+	alert("문서 준비 완료");
+})
+</script>
+</head>
+<body>
+<h1>Jquery1<p>Jquery1</p></h1>
+<h1>Jquery1</h1><p>Jquery1</p>
+<h1 class="item">Jquery1 class = item</h1>
+<h1 id="selected">Jquery1 class = selected</h1>
+</body>
+</html>

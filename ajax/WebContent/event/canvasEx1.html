@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>선 그리기</title>
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		var canvas =  document.getElementById("canvas");
+		var context = canvas.getContext("2d"); // getContext() 메서드를 호출해서, 랜더링 컨텍스트와 그리기 함수들을 사용할 수 있다. 
+		$(canvas).on({
+			mousedown: function(Event){
+				var position = $(this).offset(); // 0.0(시작점) 에서 1.0 (끝점) 사이의 위치 값을 나타내며 해당 위치의 색을 지정합니다
+				var x = event.pageX - position.left;
+				var y = event.pageY - position.top;
+				context.beginPath(); // 경로 설정 시작
+				context.moveTo(x, y); // 시작점을 저장
+			}, mouseup: function(Event){
+				var position = $(this).offset(); // 0.0(시작점) 에서 1.0 (끝점) 사이의 위치 값을 나타내며 해당 위치의 색을 지정합니다
+				var x = event.pageX - position.left;
+				var y = event.pageY - position.top;
+				context.lineTo(x, y); // 시작점부터 현재 x,y까지 선 그리기
+				context.stroke(); // 자원 초기화
+			}
+		})
+	})
+</script>
+</head>
+<body>
+<canvas id="canvas" width="700" height="400" style="border: 3px solid black;"></canvas>
+</body>
+</html>

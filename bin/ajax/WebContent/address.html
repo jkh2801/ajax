@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>XML 분석하기 (DOM 트리)</title>
+<script type="text/javascript" src="ajax.js"></script>
+<script type="text/javascript">
+function loadxml(rtype, tag){
+	requestType = rtype; // 전역변수
+	requestTag = tag; // 전역변수
+	sendRequest("address.xml", null, parseXml, "GET");
+}
+function parseXml() {
+	if(ajax.readyState == 4){
+		if(ajax.status == 200){
+			if (requestType == "all") {
+				listAllStates();
+			}else{
+				listPartStates();
+			}
+		}else{
+			alert("서버 오류: "+ ajax.status +" : "+ajax.statusText)
+		}
+	}
+}
+function listAllStates() {
+	console.log(ajax.responseText);
+	var xmlDoc = ajax.responseXML; // xml 문서를 parsing 과정을 거쳐 DOM 트리 형태로 리턴
+	// xmlDoc : 응답 받은 xml 문서의 dom 객체의 최상단 문서노드 값 저장
+	var allStates = xmlDoc.getElementsByTagName("state"); // state 태그의 정보들을 배열로 리턴
+	console.log(allStates[0]);
+	var divTag = document.getElementById("result");
+	divTag.innerHTML = "서울 전체 구";
+	for (var i = 0; i < allStates.length; i++) {
+		divTag.innerHTML += "<br>-"+allStates[i].childNodes[0].nodeValue; // 하위 태그의 값들을 가져와라
+	}
+}
+function listPartStates() {
+	console.log(ajax.responseText);
+	var xmlDoc = ajax.responseXML; // xml 문서를 parsing 과정을 거쳐 DOM 트리 형태로 리턴
+	// xmlDoc : 응답 받은 xml 문서의 dom 객체의 최상단 문서노드 값 저장
+	var States = xmlDoc.getElementsByTagName(requestTag);
+	var list = States[0].getElementsByTagName("state");
+	var divTag = document.getElementById("result");
+	divTag.innerHTML = "서울"+requestType+"구";
+	for (var i = 0; i < list.length; i++) {
+		divTag.innerHTML += "<br>-"+list[i].childNodes[0].nodeValue; // 하위 태그의 값들을 가져와라
+	}
+	/* var allStates = xmlDoc.getElementByTagName("state");
+	for(var i = 0; i < allStates.length; i++){
+		if(allStates[i].parentNode.nodeName == requestTag){
+			divTag.innerHTML += "<br>-"+allStates[i].childNodes[0].nodeValue;
+			}
+	}*/
+}
+</script>
+</head>
+<body>
+<h1>서울 구 정보</h1>
+<input type="button" value="서울 전체 구" onclick="loadxml('all','all')">
+<input type="button" value="서울 동쪽 구" onclick="loadxml('동','east')">
+<input type="button" value="서울 서쪽 구" onclick="loadxml('서','west')">
+<input type="button" value="서울 남쪽 구" onclick="loadxml('남','south')">
+<input type="button" value="서울 북쪽 구" onclick="loadxml('북','north')">
+<div id="result"></div>
+</body>
+</html>

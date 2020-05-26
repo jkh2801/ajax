@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<style type="text/css">
+* {
+	text-align: center;
+	margin: 0px;
+	padding: 0px;
+}
+</style>
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		var arr = [ "num0.jpg", "num1.jpg", "num2.jpg", "num3.jpg", "num4.jpg",
+				"num5.jpg", "num6.jpg", "num7.jpg", "num8.jpg", "num9.jpg" ];
+		$("#inbtn").click(function() {
+			// inputarr = $("#userNum").val().splie("");
+			var num = $("#userNum").val();
+			console.log(num);
+			for (var i = 0; i < num.length; i++) {
+				$("<img></img>").attr("src", "./imgs/"+arr[num.charAt(i)]).appendTo("#card").attr("width", 100).attr("height", 100).attr("border", 1);
+			}
+		})
+		$("#userNum").keyup(function(event){
+			if (event.keyCode == 13) {// enter 키
+				$("#inbtn").click(); // 이벤트 발생
+			}
+		})
+	})
+</script>
+</head>
+<body>
+	<div id="card"></div>
+	<div>
+		<input type="text" id="userNum"> <input type="button"
+			value="입력" id="inbtn">
+	</div>
+</body>
+</html>

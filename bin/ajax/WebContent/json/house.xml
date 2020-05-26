@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<properties>
+	<property>
+		<address>서울시 종로구 가회동 100번지</address>
+		<price>5000</price>
+		<comment>조용하고 좋은 이웃</comment>
+	</property>
+	<property>
+		<address>서울시 종로구 역삼동 100번지</address>
+		<price>50000</price>
+		<comment>주변시설이 좋은 곳</comment>
+	</property>
+	<property>
+		<address>경기도 부천시 역곡동 100번지</address>
+		<price>30000</price>
+		<comment>자연경관이 좋은 곳</comment>
+	</property>
+</properties>

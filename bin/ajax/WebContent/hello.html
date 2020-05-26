@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript" src="ajax.js"></script><!-- ajax.js와 연결 -->
+<script type="text/javascript">
+	function helloToServer() {
+		sendRequest("hello.jsp", "name=" + document.f.name.value, helloFromServer, "POST"); /* ajax.js에 있는 sendRequest 호출 */
+	}
+	function helloFromServer() {
+		if (ajax.readyState == 4) {// 데이터 전부 받은 상태이다.
+			// onreadyStateChange에 등록된 callback 함수는 readyState 값이 변결될 때마다 호출된다.
+			// 0 : XMLHttpRequest 객체만 생성됨.
+			// 1 : open() 메소드가 성공적으로 실행됨.
+			// 2 : 모든 요청에 대한 응답이 도착함.
+			// 3 : 요청한 데이터를 처리 중임.
+			// 4 : 요청한 데이터의 처리가 완료되어 응답할 준비가 완료됨.
+			if (ajax.status == 200) {// ajax 통신이 이루어졌다.(요청 성공)
+				hello.innerHTML = ajax.responseText; // 서버에서 문자열형태로 전달해준 메세지
+				// ajax.responseXML // 서버에서 XML 형태의 DOM 객체로 전달받는다.
+			}
+		}
+	}
+</script>
+</head>
+<body>
+	<form name="f">
+		<input type="text" name="name"> <input type="button"
+			value="인사하기" onclick="helloToServer()">
+	</form>
+	<div id="hello"></div>
+</body>
+</html>

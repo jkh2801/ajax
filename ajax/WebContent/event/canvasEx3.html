@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		var myCanvas = document.getElementById('canvas');
+		if (myCanvas.getContext) {
+			var ctx = myCanvas.getContext("2d");
+			var img = new Image();
+			img.onload = function() {
+				ctx.drawImage(img, 0, 0, 700, 400);
+				//drawImage(Image, dx, dy, dw, dh);이미지의 크기를 바꾸고 싶다면, 뒤부분 dw, dh를 바꾸어 추가하면 됩니다.
+			};
+			img.src = "../jquery/La.jpg";
+		}
+	})
+</script>
+</head>
+<body>
+	<canvas id="canvas" width="700" height="400"
+		style="border: 3px solid black;"></canvas>
+</body>
+</html>

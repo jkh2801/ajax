@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>회원이름 검색하기</title>
+<script type="text/javascript" src="ajax.js"></script>
+<script type="text/javascript">
+	function loadName(f) {
+		var params = "name="+f.name.value;
+		sendRequest("member.jsp",params, memberList, "POST");
+	}
+	function memberList(){
+		if(ajax.readyState == 4){
+			if(ajax.status == 200){
+				list.innerHTML = ajax.responseText;
+			}else{
+				alert("서버 오류: "+ ajax.status +" : "+ajax.statusText)
+			}
+		}
+	}
+</script>
+</head>
+<body>
+<form name="f">
+회원이름: <input type="text" name="name">
+<input type="button" value="검색" onclick="loadName(this.form)">
+</form>
+<div id="list"></div>
+</body>
+</html>

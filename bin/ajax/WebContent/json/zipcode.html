@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Zipcode</title>
+<script type="text/javascript" src="ajax2.js"></script>
+<script type="text/javascript">
+	function doJson() {
+		new ajax.xhr.Request("zipcode.jsp", null, jsonresult, "GET");
+	}
+	function jsonresult(xhr) {
+		if (xhr.readyState == 4) {
+			if (xhr.status == 200) {
+				jsoncontrol(xhr);
+			} else {
+				alert("서버 오류: " + ajax.status + " : " + ajax.statusText)
+			}
+		}
+	}
+	function jsoncontrol(xhr) {
+		console.log(xhr.responseText);
+		var data = xhr.responseText; 
+		var htmldata = "<table border='1'><tr><th>우편번호</th><th>읍면동</th><th>주소</th></tr>";
+		var jsondata = JSON.parse(data); // 객체 정보로 저장
+		for (var i = 0; i < jsondata.ZIP.length; i++) {
+			htmldata += "<tr><td>" + jsondata.ZIP[i].zipcode + "</td><td>" + jsondata.ZIP[i].dong
+					+ "</td><td>" + jsondata.ZIP[i].addr + "</td></tr>";
+		}
+		htmldata += "<tr><td colspan='3' align='center'>총 우편번호 건수: "
+				+ jsondata.ZIP.length + "</td></tr></table>";
+		resultBody.innerHTML = "<h2>JSON 주택정보</h2>";
+		resultBody.innerHTML += htmldata;
+	}
+	
+</script>
+</head>
+<body>
+<input type="button" value="json 매물 검색" onclick="doJson()">
+	<div id="resultBody"></div>
+</body>
+</html>

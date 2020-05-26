@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>이벤트 강제 발생시키기</title>
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$("h1").click(function() {
+			$(this).html(function(index, html) {
+				return html + "☆";
+			})
+		})
+		// trigger() : 이벤트 강제 발생
+		$("h1").first().trigger("click"); // 처음부터 이벤트 처리가 되었다.
+		$("h1").last().trigger("click");
+		// 1초에 1번씩 click 이벤트 발생시키기
+		setInterval(function() {
+			//$("h1").first().trigger("click");
+			$("h1").first().click();
+		}, 1000)
+	})
+</script>
+</head>
+<body>
+	<h1>Header_0</h1>
+	<h1>Header_1</h1>
+	<h1>Header_2</h1>
+</body>
+</html>

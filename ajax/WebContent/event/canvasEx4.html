@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>그림 맞추기 게임</title>
+<style type="text/css">
+table, td {
+	border: 1px solid gray;
+}
+
+table {
+	border-collapse: collapse;
+}
+</style>
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+	var level = 4;
+	$(function() {
+		shuffle();
+		editHtml();
+		game();
+	})
+	function shuffle() { // model 배열의 이미지를 섞기
+		model = [ "S_1.jpg", "S_1.jpg", "S_2.jpg", "S_2.jpg", "S_3.jpg",
+				"S_3.jpg", "S_4.jpg", "S_4.jpg", "S_5.jpg", "S_5.jpg",
+				"S_6.jpg", "S_6.jpg", "S_7.jpg", "S_7.jpg", "S_8.jpg",
+				"S_8.jpg", "S_9.jpg", "S_9.jpg", "S_10.jpg", "S_10.jpg",
+				"pic00.png", "pic00.png", "pic01.png", "pic01.png",
+				"pic02.png", "pic02.png", "pic03.png", "pic03.png",
+				"pic04.png", "pic04.png", "pic05.png", "pic05.png",
+				"pic06.png", "pic06.png", "pic07.png", "pic07.png" ];
+		cnt = level * level; // 필요한 그림의 갯수
+		for (var a = 0; a < 10000; a++) {
+			var ran = Math.floor(Math.random() * cnt); // 0 ~ 15까지의 임의의 수
+			var tmp = model[0];
+			model[0] = model[ran];
+			model[ran] = tmp;
+		}
+	}
+	
+	function editHtml() { // 섞여진 이미지를 순서대로 화면에 출력
+		var board = "<table>";
+		for (var i = 0; i < cnt; i++) {
+			if (i % level == 0) {
+				board += "<tr>";
+			}
+			board += "<td><img class = 'pic' src='./imgs/"+model[i]+"'value='"+model[i]+"'width='100' height='100'></td>";
+			if (i % level == (level - 1)) {
+				board += "</tr>";
+			}
+			$("#board").html(board + "</table>");
+		}
+	}
+	
+	function game() {
+		setTimeout(function() {
+			$(".pic").each(function() {
+				// opacity : 투명도 (1: 불투명, 0: 투명)
+				$(this).css("opacity", "0.01"); // 2초 후에 이미지 감춤
+			})
+		}, 2000);
+		var total = 0;
+		var count = 0;
+		var success = 0;
+		var onePic = null;
+		var twoPic = null;
+		$(".pic").click(function() {// 이미지 클릭 이벤트 처리
+			if (!$(this).is(".diepic")) {// class 속성값이 diepic아니냐?
+				total++;
+				$(this).css("opacity", 1);
+				count++;
+				if (count == 1) {// 첫번째 클릭된 이미지
+					onePic = $(this);
+					onex = onePic.parent().parent().index(); // tr 인덱스
+					oney = onePic.parent().index(); // td 인덱스
+				} else if (count == 2) { // 두번째 클릭된 이미지
+					twoPic = $(this);
+					twox = twoPic.parent().parent().index();
+					twoy = twoPic.parent().index();
+					if (onePic.attr("src") == twoPic.attr("src") && (onex != twox || oney != twoy)) {
+						success++;
+						onePic.addClass("diepic");
+						twoPic.addClass("diepic");
+						onePic.disable = true;
+						twoPic.disable = true;
+						if (cnt / 2 == success) {
+							alert(total/2 + "번 만에 성공, 게임종료");
+							setTimeout(function() {
+								if (confirm("게임을 계속하시겠습니까?")) {
+									location.reload();
+								}
+							}, 2000)
+						}
+					} else {
+						setTimeout(function() {
+							onePic.css("opacity", "0.01");
+							twoPic.css("opacity", "0.01");
+						}, 50);
+					}
+					count = 0;
+				} else {
+					alert("프로그램 오류 발생");
+				}
+			}
+		})
+	}
+	
+	function gamestart(sel) {
+		level = parseInt(sel.value);
+		shuffle();
+		editHtml();
+		game();
+	}
+</script>
+</head>
+<body>
+	<select id="level" onchange="gamestart(this)">
+		<option value="2">2x2</option>
+		<option value="4" selected="selected">4x4</option>
+		<option value="6">6x6</option>
+	</select>
+	<div id="board"></div>
+</body>
+</html>
