@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Jquery를 이용한 ajax 연습</title>
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$("#btn1").click(function() {
+			$.ajax("ajax1-1.jsp", {
+				success : function(data) { // 성공하면 함수 실행
+					$("body").append(data);
+				},
+				error : function(e) { // 실패하면 함수 실행
+					alert("서버오류: " + e.status);
+				}
+			})
+		})
+
+		$("#btn2").click(function() {
+			$("h1").get(-1).remove(); // h1 내용 뒤부터 제거
+			// $("h1:last").remove();
+			//$("h1").eq(-1).remove();
+		})
+
+		$("#btn3").click(function() {// 파라미터 전달
+			//var data = "name=홍길동&age=20";
+			var data = {name:"홍길동",age:20};
+			$.ajax({
+				url : "ajax1-2.jsp",
+				type : "POST",
+				data : data,
+				success : function(data) { // 성공하면 함수 실행
+					$("body").append(data);
+				},
+				error : function(e) { // 실패하면 함수 실행
+					alert("서버오류: " + e.status);
+				}
+			})
+		})
+
+		$("#btn4").click(function() {
+			$("h2").get(-1).remove();
+		})
+
+	})
+</script>
+</head>
+<body>
+	<button id="btn1">ajax1-1.jsp 호출</button>
+	<button id="btn2">ajax1-1.jsp 내용 제거</button>
+	<button id="btn3">ajax1-2.jsp 호출</button>
+	<button id="btn4">ajax1-2.jsp 내용 제거</button>
+</body>
+</html>

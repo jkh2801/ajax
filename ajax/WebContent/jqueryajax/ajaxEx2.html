@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>ajax를 이용한 로그인</title>
+<!-- 아이디 중복 버튼
+1. id 파라미터를 ajax3.sjp로 전송
+	id가 존재 : 존재하는 아이디입니다. ==> message 부분에 출력 // id 입력란을 지우기
+	id가 존재하지 않으면 : 회언가입을 할 수 있는 아이디 입니다. ==> meesage 출력후 id 입력란에 전송 -->
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("#submit").click(function() {
+		$.ajax({
+			url : "ajax2.jsp",
+			type : "POST",
+			data : {id: $("#id").val(), pass: $("#pass").val()},
+			success : function(data) { // 성공하면 함수 실행
+				$("#message").append(data);
+			},
+			error : function(e) { // 실패하면 함수 실행
+				alert("서버오류: " + e.status);
+			}
+		})
+		return false; // 기본제공 이벤트 취소하기
+	})
+	
+	 $("#btn").click(function() {
+	 	$.ajax({
+	 		url : "ajax3.jsp",
+	 		type : "POST",
+	 		data : {id: $("#id").val()},
+	 		success : function(data){
+	 			$("#message").html(data);
+	 			if ($("h1").is(".find")) {
+					$("#id").val("");
+					$("#id").focus();
+				}
+	 		},
+	 		error : function(e){
+	 			alert("서버오류: "+ e.status);
+	 		}
+	 	})
+	 })
+})
+</script>
+</head>
+<body>
+<form name="f">
+아이디 : <input type="text" id="id"><br>
+<input type="button" value="아이디 체크" id="btn"><br>
+비밀번호 :  <input type="password" id="pass"><br>
+<input type="submit" value="로그인" id="submit">
+</form>
+<div id="message"></div>
+</body>
+</html>

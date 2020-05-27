@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>XML 연습</title>
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$("#btn").click(
+				function() {
+					$.ajax("person.xml", { // person.xml에 비동기 통신
+						success : function(data) { // data : person.xml 그 자체
+							$(data).find("person").each(
+									function() {// this: person 각각
+										name = "<li>"
+												+ $(this).find("name").text()
+												+ "</li>";
+										gender = "<li>"
+												+ $(this).find("gender").text()
+												+ "</li>";
+										part = "<li>"
+												+ $(this).find("part").text()
+												+ "</li>";
+										$("#person").append(
+												"<ul>" + name + gender + part
+														+ "</ul>");
+									})
+						},
+						error : function(e) {
+							alert("서버오류: " + e.status);
+						}
+					})
+				})
+
+		$("#allbtn").click(function() {
+			$.ajax("address.xml", {
+				success : function(data) {
+					$(data).find("state").each(function() {
+						state = "<li>" + $(this).text() + "</li>";
+						$("#state").append("<ul>" + state + "</ul>");
+					})
+				},
+				error : function(e) {
+					alert("서버오류: " + e.status);
+				}
+			})
+		})
+		
+		$(".btn").click(function() {
+			var direction = $(this).val();
+			$.ajax("address.xml", {
+				success: function(data){
+					$(data).find(direction).find("state").each(function(){
+						state = "<li>" + $(this).text() + "</li>";
+						$("#"+direction+"_state").append("<ul>" + state + "</ul>");
+					})
+				}
+			})
+		})
+	})
+</script>
+</head>
+<body>
+	<button id="btn">XML 연습</button>
+	<div id="person"></div>
+	<button id="allbtn">전체구</button>
+	<div id="state"></div>
+	<button class="btn" value="east">동구</button>
+	<div id="east_state"></div>
+	<button class="btn" value="west">서구</button>
+	<div id="west_state"></div>
+	<button class="btn" value="north">북구</button>
+	<div id="north_state"></div>
+	<button class="btn" value="south">남구</button>
+	<div id="south_state"></div>
+</body>
+</html>

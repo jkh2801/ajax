@@ -5,7 +5,7 @@
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 <fmt:requestEncoding value="UTF-8" /> <!-- ajax 객체는 무조건 UTF-8로 인코딩 해야 한다. -->
 <sql:setDataSource var="conn" driver="org.mariadb.jdbc.Driver"
-	url="jdbc:mariadb://localhost:3306/scott" user="scott" password="1234" />
+	url="jdbc:mariadb://localhost:3306/classdb" user="scott" password="1234" />
 <sql:query var="rs" dataSource="${conn}">select * from member where name like ?<sql:param>%${param.name}%</sql:param>
 </sql:query>
 <table border="1" style="border-collapse: collapse;">
