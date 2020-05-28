@@ -46,18 +46,22 @@
 				}
 			})
 		})
-		
-		$(".btn").click(function() {
-			var direction = $(this).val();
-			$.ajax("address.xml", {
-				success: function(data){
-					$(data).find(direction).find("state").each(function(){
-						state = "<li>" + $(this).text() + "</li>";
-						$("#"+direction+"_state").append("<ul>" + state + "</ul>");
+
+		$(".btn").click(
+				function() {
+					var direction = $(this).val();
+					$.ajax("address.xml", {
+						success : function(data) {
+							$(data).find(direction).find("state").each(
+									function() {
+										state = "<li>" + $(this).text()
+												+ "</li>";
+										$("#" + direction + "_state").append(
+												"<ul>" + state + "</ul>");
+									})
+						}
 					})
-				}
-			})
-		})
+				})
 	})
 </script>
 </head>

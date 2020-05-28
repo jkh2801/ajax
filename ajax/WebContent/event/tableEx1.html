@@ -37,7 +37,7 @@ table, th, td {
 		})
 		
 		$("th").hover(function() {
-			console.log($(this));
+			console.log($(this).index());
 			console.log($(this).parent()); // tr 태그들
 			console.log($(this).parent().children()); // th 태그들
 			len = $(this).parent().children().length; // 4
