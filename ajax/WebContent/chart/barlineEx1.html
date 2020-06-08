@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>막대 그래프와 라인 그래프를 함께 표현하자.</title>
+<script type="text/javascript"
+	src="http://www.chartjs.org/dist/2.9.3/Chart.min.js"></script>
+<style type="text/css">
+canvas { /* 글씨가 선택되지 않도록 */
+	-moz-user-select: none; /* 파이어폭스 브라우저 */
+	-webkit-user-select: none; /* 사파리 브라이줘 */
+	-ms-user-select: none; /* 익스플로러 */
+}
+</style>
+</head>
+<body>
+<div id="container" style="width: 75%;">
+		<canvas id="canvas"></canvas>
+	</div>
+	<script type="text/javascript">
+		var Months = [ "1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월",
+				"10월", "11월", "12월" ];
+		var ChartData = {
+				labels : Months,
+				datasets : [{// 그래프로 표시될 내용을 설정
+					type : 'line',
+					fill: false,
+					borderColor: "#FF00FF",
+					borderWidth: 2,
+					label: '영업부',
+					data:[5, 10, 20, 50, -20, 60, 30, 50, 20, 40, 60]
+				},{
+					type : 'bar',
+					backgroundColor: "#A566FF",
+					borderColor: "white",
+					borderWidth: 2,
+					label: '영업부',
+					data:[5, 10, 20, 50, -20, 60, 30, 50, 20, 40, 60]
+				},{
+					type : 'line',
+					fill: false,
+					borderColor: "#00FF00",
+					label: '총무부',
+					data:[0, 5, 20, 50, 25, 60, 90, 50, 20, 3, 80]
+				},{
+					type : 'bar',
+					backgroundColor: "#86E57F",
+					label: '총무부',
+					data:[0, 5, 20, 50, 25, 60, 90, 50, 20, 3, 80]
+				}]
+		}
+		window.onload = function(){
+			var ctx = document.getElementById('canvas').getContext('2d');
+			window.myBar = new Chart(ctx, {
+				type: 'line', // 선그래프
+				data: ChartData,  // data
+				options: {
+					responsive: true, // 반응형 웹
+					legend: {display: false}, 
+					title: {
+						display: true,
+						text: '막대그래프와 선그래프'
+					},
+					scales: {
+						yAxes: [{ // y축
+							display: true,
+							scaleLabel: {
+								display: true,
+								labelString: '부서별 실적 증가율'
+							}
+						}]
+					}
+				}
+			})
+		}
+	</script>
+</body>
+</html>

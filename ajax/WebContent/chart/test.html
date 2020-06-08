@@ -29,6 +29,7 @@
 		}
 	
 		function graphprint(type) {
+			var name = type=='pie'?'파이그래프':'도넛그래프';
 			var ctx = document.getElementById("canvas").getContext("2d");
 			var config = {
 					type : type,
@@ -46,7 +47,7 @@
 									window.chartColors.green, window.chartColors.blue,
 									"#FF0000", "#00FF00", "#0000FF", "#FFFF00",
 									"#00FFFF", "#FF00FF", "#EEEEEE" ],
-							label : '도넛 그래프'
+							label : name
 						} ],
 						labels : months
 					},
@@ -57,7 +58,7 @@
 						},
 						title : {
 							display : true,
-							text : '도넛 그래프 연습'
+							text : name
 						},
 						animation : {
 							animateScale : true,
