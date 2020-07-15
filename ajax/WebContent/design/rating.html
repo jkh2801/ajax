@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Rating System</title>
+<style type="text/css">
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Poppins', sans-serif;
+}
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	background: #20152d;
+}
+.rating {
+	position: relative;
+	display: flex;
+	flex-direction: row-reverse;
+}
+.rating input {
+	display: none;
+}
+.rating label {
+	position: relative;
+	width: 0;
+	height: 128px;
+	cursor: pointer;
+	transition: 0.5s;
+	filter: grayscale(1);
+	text-align: center;
+	opacity: 0;
+}
+.rating:hover label{
+	width: 160px;
+	opacity: 0.2;
+}
+.rating input:hover + label,
+.rating input:checked + label{
+	filter: grayscale(0);
+	opacity: 1;
+	width: 160px;
+}
+.rating label h4 {
+	color: #fff;
+	font-size: 24px;
+	padding-top: 10px;
+	font-weight: 500;
+	white-space: nowrap;
+	opacity: 0;
+	transform: translateY(-50%) scale(0);
+	transition: 0.5s;
+}
+.rating input:hover + label h4,
+.rating input:checked + lavel h4 {
+	opacity: 1;
+	transform: translateY(0) scale(1)
+}
+.text {
+	position: absolute;
+	top: -80px;
+	left: 50%;
+	transform: translateX(-50%);
+	color: #fff;
+	width: 500px;
+	font-weight: 700;
+	letter-spacing: 2px;
+	text-align: center;
+	white-space: nowrap;
+	font-size: 36px;
+}
+img {
+	width: 30%;
+	height: 30%;
+}
+</style>
+</head>
+<body>
+<div class="rating">
+	<input type="radio" name="star" id="star5">
+	<label for="star5">
+		<img src="1.png">
+		<h4>I Hated It</h4>
+	</label>
+	<input type="radio" name="star" id="star4">
+	<label for="star4">
+		<img src="2.png">
+		<h4>I Dislike It</h4>
+	</label>
+	<input type="radio" name="star" id="star3">
+	<label for="star3">
+		<img src="3.png">
+		<h4>It's OK</h4>
+	</label>
+	<input type="radio" name="star" id="star2">
+	<label for="star2">
+		<img src="4.png">
+		<h4>I Liked It</h4>
+	</label>
+	<input type="radio" name="star" id="star1">
+	<label for="star1">
+		<img src="5.png">
+		<h4>I Loved It</h4>
+	</label>
+	<h2 class="text">Do you like this board???</h2>
+</div>
+</body>
+</html>
