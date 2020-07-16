@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>CardEx2</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
+body {
+	margin: 0;
+	padding: 0;
+	font-family: 'Roboto Condensed', sans-serif !important;
+}
+section {
+	padding: 180px 0 0;
+}
+.card {
+	position: relative;
+	height: 400px;
+	overflow: hidden;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+}
+.card .post-image {
+	height: 300px;
+	overflow: hidden;
+}
+.card .post-image img {
+	transition: .5s;
+	height: 100%;
+	width: 100%;
+}
+.card:hover .post-image img{
+	transform: scale(1.1) translateY(-50px);
+}
+.card .news-content {
+	position: absolute;
+	bottom: -150px;
+	padding: 10px 20px 60px;
+	background: #fff;
+	transition: .5s;
+}
+.card:hover .news-content {
+	bottom: 0px;
+}
+.card .category {
+	position: absolute;
+	top: -30px;
+	left: 0;
+	height: 30px;
+	line-height: 30px;
+	background: #00B8F4;
+	text-align: center;
+	color: #fff;
+	text-transform: uppercase;
+	padding: 5px 20px;
+	font-size: 16px;
+	font-weight: bold;
+	transition: .5s;
+}
+.card .news-content .post-meta a{
+	text-decoration: none;
+	padding-right: 10px;
+	color: black;
+	font-weight: bold;
+	transition: .5s;
+}
+.card .news-content .post-meta a:hover {
+	color: #DF084A;
+}
+.card .news-content .post-header {
+	margin: 0;
+	padding: 10px 0;
+	color: #007DA6;
+	height: 75px; 
+	font-size: 28px;
+	overflow: hidden;
+}
+.card .news-content p {
+	font-size: 16px;
+	margin: 10px 0 0;
+	padding: 0;
+	color: black;
+	transition: .5s;
+	opacity: 0;
+}
+.card:hover .news-content p {
+	opacity: 1;
+}
+</style>
+</head>
+<body>
+<section>
+<div class="container-fluid">
+<div class="container">
+<div class="row">
+<div class="col-sm-4">
+<div class="card">
+<div class="post-image">
+<img src="La.jpg" class="img-responsive">
+</div>
+<div class="news-content">
+<span class="category">Web toons</span>
+<div class="post-meta">
+<span class="author">
+<a href="#">
+<i class="fa fa-user"></i>
+Someone Famouse
+</a></span>
+<span class="time">
+<a href="#">
+<i class="fa fa-clock-o"></i>
+Dec 7, 2017
+</a>
+</span>
+<span class="comments pull-right">
+<a href="#">
+<i class="fa fa-commenting-o"></i>
+24
+</a>
+</span>
+<div class="clearfix"></div>
+</div>
+<h2 class="post-header">
+Component-Based
+</h2>
+<p>
+Build encapsulated components that manage their own state, then compose them to make complex UIs
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</body>
+</html>
