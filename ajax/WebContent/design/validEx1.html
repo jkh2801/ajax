@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Valid Ex1</title>
+<style type="text/css">
+@import
+	url('http://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900');
+
+* {
+	margin: 0;
+	padding: 0;
+	font-family: 'Poppins', sans-serif;
+}
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	background: #373737;
+}
+h3 {
+	position: relative;
+	font-size: 20px;
+	color: #f9f9f9;
+	letter-spacing: 1px;
+	font-weight: 500;
+	margin-bottom: 5px;
+}
+#form {
+	position: relative;
+}
+#form #email {
+	width: 300px;
+	background: #292929;
+	outline: none;
+	border: none;
+	padding: 10px;
+	border-radius: 6px;
+	color: #fff;
+	font-style: 18px;
+}
+#form #inputBox{
+	position: relative;
+	
+}
+#text{
+	display: block;
+	color: #000;
+	font-weight: 300;
+	font-style: italic;
+	padding: 5px;
+}
+#form #inputBox:before {
+	content: '';
+	position: absolute;
+	right: 12px;
+	top: 12px;
+	width: 24px;
+	height: 24px;
+	background: url(img/invalid.png);
+	background-size: cover;
+	z-index: 1000;
+}
+#form.invalid .inputBox:before {
+	content: '';
+	position: absolute;
+	right: 12px;
+	top: 9px;
+	width: 24px;
+	height: 24px;
+	background: url(img/invalid.png);
+	background-size: cover;
+	z-index: 1000;
+}
+#form.valid .inputBox:before {
+	content: '';
+	position: absolute;
+	right: 12px;
+	top: 9px;
+	width: 24px;
+	height: 24px;
+	background: url(img/valid.png);
+	background-size: cover;
+	z-index: 1000;
+}
+</style>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+</head>
+<body>
+<div>
+<h3>Email Validation Check</h3>
+<form action="#" id="form">
+	<div class="inputBox">
+		<input type="text" name="" id="email" placeholder="Enter Email Address"
+		onkeyup="validation()">
+		<span id="text"></span>
+	</div>
+</form>
+</div>
+<script type="text/javascript">
+function validation() {
+	var form = document.getElementById("form");
+	var email = document.getElementById("email").value;
+	var text = document.getElementById("text");
+	var pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+	console.log(email);
+	if(email.match(pattern)){
+		form.classList.add("valid");
+		form.classList.remove("invalid");
+		text.innerHTML = "Your Email Address in Valid";
+		text.style.color = "#00ff00";
+	}else {
+		form.classList.remove("valid");
+		form.classList.add("invalid");
+		text.innerHTML = "Please Enter Valid Email Address";
+		text.style.color = "#ff0000";
+	}
+	if(email == ""){
+		form.classList.remove("valid");
+		form.classList.remove("invalid");
+		text.innerHTML = "";
+		text.style.color = "#00ff00";
+	}
+}
+</script>
+</body>
+</html>

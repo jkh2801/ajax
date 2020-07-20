@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Slider</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style type="text/css">
+body {
+	margin: 0;
+	padding: 0;
+	font-family: sans-serif;
+	overflow: hidden;
+}
+.container {
+	position: relative;
+	width: 100%;
+	height: 100vh;
+}
+.container .slider{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 500%;
+	height: 100%;
+	animation: animate 10s linear infinite;
+}
+.container .slider .slide{
+	position: relative;
+	width: 20%;
+	height: 100%;
+	float: left;
+}
+.container .slider .slide .caption{
+	position: absolute;
+	bottom: 60px;
+	left: 60px;
+	right: 60px;
+	padding: 30px;
+	background: rgba(0, 0, 0, .5);
+	box-sizing: border-box;
+	transition: 0.5s;
+}
+.container .slider .slide .caption h2{
+	margin: 0 0 20px;
+	padding: 0;
+	color: #fff;
+	font-size: 48px;
+	transition: 0.5s;
+}
+.container .slider .slide .caption p{
+	margin: 0;
+	padding: 0;
+	color: #fff;
+	font-size: 18px;
+}
+.container .slider .slide.slide1{
+	background: url(https://mblogthumb-phinf.pstatic.net/MjAxOTAzMjhfNjgg/MDAxNTUzNzU3OTM5OTIx.xPSzrj7yh7PU0dg8mv9oYVZBQTOHQfdHk7fy17jjJpQg.1HIJL4jwapzDGPNQIc-CNH_KNcOaNScKxb7lS36RncMg.JPEG.juyota/1.jpg?type=w800);
+	background-size: cover;
+	background-position: center;
+}
+.container .slider .slide.slide2{
+	background: url(https://lh3.googleusercontent.com/proxy/as-DLRf6kgyfF7opLVYOKkdlnjf4eTHaR2d-GhgCBdzKYTAg_AYHyud4CZV1NVkfDSk8xpc2Qu37Ow6H5hIDZsaogvFrhp_91-xBQFDd0lMfa3ouoybvnD3kIZf_Uhma_LIwty807U3jNAWY51Y0yRRqNI87RxL4aaVrHbUahiHe4zpo9uVdrOix-puV54NTLMSak22yhaNo3LMb0rU-P2cc8k_e3C5U-RyZXxYWl8m8AMd5krXnBHwWsO8F_UoAekz-3ms5cbeCp7fZUAjW6aHyj2CyiWpWB7Px2GaIQKCga6-Nlg);
+	background-size: cover;
+	background-position: center;
+}
+.container .slider .slide.slide3{
+	background: url(https://lh3.googleusercontent.com/proxy/3jQ4pvdtJP4NbwXzdu6G7T78J6hAGouUG_BmegxsTBcX3OUKW9pCHYcs_2bRDO-g_u3voFZPUOcjpdhRFKSyVAKvv3QhwCvmvIbbmI-zlq8CO807o6LX-WzcWkKFIINqb1OVbB3FNB_Jv-lwhEylnPNa3Sp4LEyvIFqzfjtrBELek9xyQ7WucG-ipDQmHppSU7OQJYDlqtEFbVii92QG_3QpP5-G-k6SzlfuR8rv4uFt4UkIf5xH8VmY1Wqsz-U9YHJzf3LTzhalvAUFhfJUcvdLBzYBNxuLEYM4sLI8tc7_dnVUlM8DNZSkeLXlDyUWEjkFAcAX44Zb1SCTt0O76l1EewFv4tHWG_XIxkXMkR7XXOYpuSwuKCZGBrbU7rd7tHCTF1KJEpJfrahrxtpmaS9yub0MIGYoPw1hlUPZjqLoh7Zs1K5ehZk3hEbZBBNePxOfbe-Z);
+	background-size: cover;
+	background-position: center;
+}
+.container .slider .slide.slide4{
+	background: url(https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Anivia_1.jpg);
+	background-size: cover;
+	background-position: center;
+}
+@keyframes animate{
+	0%{
+		left: 0;
+	}
+	20%{
+		left: 0;
+	}
+	25%{
+		left: -100%;
+	}
+	45%{
+		left: -100%;
+	}
+	50%{
+		left: -200%;
+	}
+	70%{
+		left: -200%;
+	}
+	75%{
+		left: -300%;
+	}
+	95%{
+		left: -300%;
+	}
+	100%{
+		left: -400%;
+	}
+}
+@media (max-width: 768px){
+.container .slider .slide .caption{
+	bottom: 20px;
+	left: 20px;
+	right: 20px;
+	padding: 20px;
+}
+.container .slider .slide .caption h2{
+	margin: 0 0 10px;
+	font-size: 30px;
+}
+.container .slider .slide .caption p{
+	font-size: 16px;
+}
+}
+</style>
+
+</head>
+<body>
+	<div class="container">
+		<div class="slider">
+			<div class="slide slide1">
+				<div class="caption">
+					<h2>Slide 1</h2>
+					<p>Slide 1</p>
+				</div>
+			</div>
+			<div class="slide slide2">
+				<div class="caption">
+					<h2>Slide 2</h2>
+					<p>Slide 2</p>
+				</div>
+			</div>
+			<div class="slide slide3">
+				<div class="caption">
+					<h2>Slide 3</h2>
+					<p>Slide 3</p>
+				</div>
+			</div>
+			<div class="slide slide4">
+				<div class="caption">
+					<h2>Slide 4</h2>
+					<p>Slide 4</p>
+				</div>
+			</div>
+			<div class="slide slide1">
+				<div class="caption">
+					<h2>Slide 1</h2>
+					<p>Slide 1</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

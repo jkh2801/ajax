@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>video Ex2</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<!-- JS, Popper.js, and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<style type="text/css">
+body {
+	margin: 0;
+	padding: 0;
+	background: #bfb6fb !important;
+}
+
+.container {
+	margin-top: 12%;
+}
+
+h1 {
+	margin-bottom: 50px !important;
+}
+
+.play-btn {
+	width: 50px;
+	position: relative;
+	left: -35%;
+	cursor: pointer;
+	transition: 0.5s;
+	opacity: 0;
+}
+.col-md-4:hover .play-btn{
+	opacity: 1;
+}
+.modal-content{
+	background: transparent !important;
+	border: none !important;
+}
+</style>
+
+</head>
+<body>
+	<div class="conntainer text-center">
+		<h1>OnClick Video Popup</h1>
+		<div class="row">
+			<div class="col-md-4">
+				<img src="orange.jpg" class="img-fluid"> <img src="play.png"
+					class="play-btn" data-toggle="modal" data-target="#play-video-1">
+			</div>
+			<div class="col-md-4">
+				<img src="orange.jpg" class="img-fluid"> <img src="play.png"
+					class="play-btn" data-toggle="modal" data-target="#play-video-2">
+			</div>
+			<div class="col-md-4">
+				<img src="orange.jpg" class="img-fluid"> <img src="play.png"
+					class="play-btn" data-toggle="modal" data-target="#play-video-3">
+			</div>
+		</div>
+	</div>
+	<div class="modal fade" id="play-video-1">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-body">
+					<video width="100%" controls="controls" autoplay="autoplay" loop="loop">
+						<source src="harry.mp4" type="video/mp4">
+					</video>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade" id="play-video-2">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-body">
+					<video width="100%" controls="controls" autoplay loop>
+						<source src="harry.mp4" type="video/mp4">
+					</video>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade" id="play-video-3">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-body">
+						<video width="100%" controls="controls" autoplay="autoplay" loop="loop">
+						<source src="harry.mp4" type="video/mp4">
+					</video>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Modal Ex1</title>
+<style type="text/css">
+@import
+	url('http://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900')
+	;
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Poppins', sans-serif;
+}
+
+.container {
+	position: relative;
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: #fff173;
+	transition: 0.5s;
+	padding: 20px;
+}
+
+.container#blur.active {
+	filter: blur(20px);
+	pointer-events: none;
+	user-select: none;
+}
+
+
+.container .content {
+	position: relative;
+	max-width: 800px;
+}
+
+h2 {
+	font-weight: 600;
+	margin-bottom: 10px;
+	color: #333;
+}
+
+.container .content img {
+	max-width: 100%;
+	display: block;
+}
+
+a {
+	position: relative;
+	padding: 5px 20px;
+	display: inline-block;
+	margin-top: 20px;
+	text-decoration: none;
+	color: #fff;
+	background: #111;
+}
+#popup {
+	position: fixed;
+	top: 40%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 600px;
+	padding: 50px;
+	box-sizing: 0 5px 30px rgba(0, 0, 0, .30);
+	background: #fff;
+	visibility: hidden;
+	opacity: 0;
+	transition: 0.5s;
+}
+#popup.active {
+	top: 50%;
+	visibility: visible;
+	opacity: 1;
+	transition: 0.5s;
+}
+</style>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+</head>
+<body>
+	<div class="container" id="blur">
+		<div class="content">
+			<h2>A B C D E F G H I J K L M N O P Q R S T U V W X Y Z</h2>
+			<img src="orange.jpg"> <a href="#" onclick="toggle()">Read More</a>
+		</div>
+	</div>
+	<div id="popup">
+		<h2>A B C D E F G H I J K L M N O P Q R S T U V W X Y Z</h2>
+		<p>a b c d e f g h i j k l m n o p q r s t u v w x y z</p>
+		<a href="#" onclick="toggle()">Close</a>
+	</div>
+	<script type="text/javascript">
+		function toggle() {
+			var blur = document.getElementById("blur");
+			blur.classList.toggle('active');
+			var popup = document.getElementById("popup");
+			popup.classList.toggle("active");
+		}
+	</script>
+</body>
+</html>
