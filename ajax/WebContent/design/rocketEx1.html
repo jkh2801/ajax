@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Rocket Ex1</title>
+<style type="text/css">
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;	
+}
+.scene {
+	position: relative;
+	width: 100%;
+	height: 100vh;
+	background: #01070a;
+	overflow: hidden;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.scene i {
+	position: absolute;
+	top: -250px;
+	background: rgba(255, 255, 255, 0.5);
+	animation: animateStars linear infinite;
+	transition: 0.1s;
+}
+@keyframes animateStars{
+	0% {
+		transform: translateY(0);
+	}
+	100% {
+		transform: translateY(100vh);
+	}
+}
+.scene .rocket {
+	position: absolute;
+	pointer-events: none;
+	animation: animate 0.2s ease infinite;
+}
+@keyframes animate{
+	0%, 100% {
+		transform: translateY(-52px) translateX(-50%);
+	}
+	50% {
+		transform: translateY(-48px) translateX(-50%);
+	}
+}
+.scene .rocket::before {
+	content: '';
+	position: absolute;
+	bottom: -200px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 10px;
+	height: 200px;
+	background: linear-gradient(#00d0ff, transparent);
+}
+.scene .rocket::after {
+	content: '';
+	position: absolute;
+	bottom: -200px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 10px;
+	height: 200px;
+	background: linear-gradient(#00d0ff, transparent);
+	filter: blur(20px);
+}
+.scene:active .rocket::before,
+.scene:active .rocket::after {
+	background: linear-gradient(#ff12d7, transparent);
+	bottom: -300px;
+	height: 300px;
+	filter: blur(2px);
+}
+</style>
+</head>
+<body>
+<div class="scene">
+<div class="rocket">
+<img src="img/rocket.png">
+</div>
+</div>
+<script type="text/javascript">
+	document.addEventListener("mousemove", function(e) {
+		var rocket = document.querySelector(".rocket");
+		rocket.style.left = e.offsetX +"px";
+		rocket.style.top = e.offsetY +"px";
+	})
+	function stars() {
+		let count = 50;
+		let scene = document.querySelector(".scene");
+		let i = 0;
+		while (i < count) {
+			let star = document.createElement('i');
+			console.log(star);
+			let x = Math.floor(Math.random() * window.innerWidth);
+			let duration = Math.random() * 1;
+			let h = Math.random() * 100;
+			star.style.left = x + 'px';
+			star.style.width = 1 + 'px';
+			star.style.height = 50 + h +'px';
+			star.style.animationDuration = duration +'s';
+			scene.appendChild(star);
+			i++
+		}
+	}
+	stars();
+</script>
+</body>
+</html>
