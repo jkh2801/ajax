@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>File uploadEx3</title>
+<style type="text/css">
+#custom-buttom {
+	padding: 10px;
+	background: #009578;
+	border: 1px solid #000;
+	border-radius: 5px;
+	cursor: pointer;
+}
+#custom-buttom:hover {
+	background: #00b28f;
+}
+#custom-text {
+	margin-left: 10px;
+	font-family: sans-serif;
+	color: #000;
+}
+</style>
+</head>
+<body>
+<input type="file" id="real-file" hidden="hidden">
+<button type="button" id="custom-buttom">Choose A File</button>
+<span id="custom-text">No file chosen, yet</span>
+ <script type="text/javascript">
+ const realFileBtn = document.getElementById("real-file");
+ const customBtn = document.getElementById("custom-buttom");
+ const customTxt = document.getElementById("custom-text");
+ customBtn.addEventListener("click", function(e) {
+	 realFileBtn.click();
+ });
+ realFileBtn.addEventListener("change", function(e) {
+	 console.log(realFileBtn);
+ 	if(realFileBtn.value) {
+ 		customTxt.innerHTML = realFileBtn.value.match(/[\/\\]([\w\ds\.\-\(\)]+)$/)[1];
+ 	} else {
+ 		customTxt.innerHTML = "No file chosen, yet";
+ 	}
+ });
+ </script>
+</body>
+</html>

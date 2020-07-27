@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>File uploadEx2</title>
+<style type="text/css">
+.image-preview {
+	width: 300px;
+	min-height: 100px;
+	border: 2px solid #dddddd;
+	margin-top: 15px;
+	
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: bold;
+	color: #cccccc;
+}
+.image-preview__image {
+	display: none;
+	width: 100%;
+}
+</style>
+</head>
+<body>
+<h1>Imgae Preview on File Uploads</h1>
+<input type="file" id="inputFile" name="inputFile" multiple="multiple">
+<div class="image-preview" id="imagePreview">
+	<img alt="Image Preview" src="" class="image-preview__image">
+	<span class="image-preview__default-text">Image Preview</span>
+</div>
+<script type="text/javascript">
+const inputFile = document.getElementById("inputFile");
+const previewContainer = document.getElementById("imagePreview");
+const previewImage = previewContainer.querySelector(".image-preview__image");
+const previewDefaultText = previewContainer.querySelector(".image-preview__default-text");
+
+inputFile.addEventListener("change", function(e) {
+	console.log(this.files)
+	const file = this.files[0];
+	console.log(this);
+	console.log(file);
+	if(file) {
+		const reader = new FileReader();
+		previewDefaultText.style.display = 'none';
+		previewImage.style.display = 'block';
+		reader.addEventListener("load", function(e) {
+			console.log(this);
+			previewImage.setAttribute("src", this.result);
+		});
+		reader.readAsDataURL(file);
+	}else {
+		previewDefaultText.style.display = null;
+		previewImage.style.display = null;
+		previewImage.setAttribute("src", "");
+	}
+})
+
+
+</script>
+</body>
+</html>
