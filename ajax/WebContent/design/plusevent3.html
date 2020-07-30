@@ -5,6 +5,10 @@
 <title>Action Button</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <style type="text/css">
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+* {
+	font-family: 'Montserrat', sans-serif;
+}
 body {
 	margin: 0;
 	padding: 0;
@@ -114,7 +118,7 @@ body {
 	transform: translate(-50%, -50%);
 	width: 600px;
 	padding: 50px;
-	box-sizing: 0 5px 30px rgba(0, 0, 0, .30);
+	box-shadow: 0 5px 30px rgba(0, 0, 0, .30);
 	background: #fff;
 	visibility: hidden;
 	opacity: 0;
@@ -126,8 +130,9 @@ body {
 	visibility: visible;
 	opacity: 1;
 	transition: 0.5s;
+	border-radius: 50px;
 }
-#imagePreview {
+#modal_file {
 	display: none;
 }
 .container.active {
@@ -139,8 +144,9 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background: #122647;
+	background: #f3f4f8;
 	height: 500px;
+	border-radius: 50px;
 }
 #modal .formBx form {
 	position: relative;
@@ -152,45 +158,40 @@ body {
 	position: relative;
 	margin-bottom: 40px;
 }
-#modal .formBx form .inputBox:last-child {
-	margin-bottom: 0px;
-}
-#modal .formBx form .inputBox input,
 #modal .formBx form .inputBox textarea {
 	position: relative;
 	background: transparent;
 	outline: none;
-	border: none;
 	width: 100%;
-	color: #fff;
 	padding-bottom: 10px;
 	font-size: 16px;
 	letter-spacing: 1px;
 	font-weight: 300;
-	border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+	border: 2px solid #8178d3;
 	resize: none;
 }
 #modal .formBx form .inputBox textarea {
 	height: 100%;
-	padding-top: 70px;
+	margin-top: 70px;
 }
-#modal .formBx form .inputBox input[type="submit"] {
-	background: #fff;
+#modal .formBx form input[type="submit"],
+#modal .formBx form input[type="button"] {
+	background: #8178d3;
 	padding: 8px 20px;
-	margin-top: -10px;
-	width: 100px;
+	width: 100%;
 	cursor: pointer;
-	background: #ff5064;
 	color: #fff;
 	font-size: 18px;
 	font-weight: 400;
 	border: none;
 	text-transform: uppercase;
 	letter-spacing: 4px;
+	margin-bottom: 10px;
 }
-#modal .formBx form .inputBox input[type="submit"]:focus {
-	background: #1bfaad;
-	color: #111;
+#modal .formBx form input[type="submit"]:focus,
+#modal .formBx form input[type="button"]:focus {
+	background: #fff;
+	color: #8178d3;
 }
 #modal .formBx form .inputBox span {
 	position: absolute;
@@ -199,16 +200,172 @@ body {
 	font-weight: 300;
 	display: inline-block;
 	pointer-events: none;
-	transform:  translateY(-80px);
+	transform:  translateY(30px);
 	letter-spacing: 1px;
-	color: rgba(255, 255, 255, 0.5);
+	color: #63686e;
 	transition: all 0.2s;
 }
-#modal .formBx form .inputBox input:focus,
 #modal .formBx form .inputBox textarea:focus,
-#modal .formBx form .inputBox input:valid,
 #modal .formBx form .inputBox textarea:valid{
-	border-bottom-color: #fff;
+	border: 2px solid #000;
+}
+.choose_file label {
+	display: block;
+	border: 2px dashed #8178d3;
+	padding: 10px;
+	width: calc(100% - 20px);
+	text-align: center;
+	cursor: pointer;
+	margin-bottom: 30px;
+}
+.choose_file #choose_file {
+	outline: none;
+	width: 0%;
+	opacity: 0;
+}
+.choose_file span {
+	font-size: 14px;
+	color: #8178d3;
+}
+.choose_file label:hover span{
+	text-decoration: underline;
+}
+#fileview {
+	padding: 0;
+}
+li {
+	font-family: sans-serif;
+	color: #000;
+	list-style: none;
+}
+.image-preview {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: bold;
+	color: #cccccc;
+}
+.image-preview__image {
+	display: block;
+	width: 100%;
+}
+
+ul#fileview {
+	margin: 0 auto;
+	padding: 0;
+	float: left;
+}
+
+ul#fileview li {
+	list-style: none;
+	margin: 5px;
+	width: 100px;
+	height: 100px;
+	border: 1px solid rgba(0, 0, 0, .2);
+	overflow: hidden;
+}
+
+ul#fileview li img {
+	width: 100%;
+	height: 100%;
+}
+
+.imgBox {
+	float: left;
+	width: 500px;
+	height: 500px;
+	border: 2px solid #8178d3;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background: #fff;
+}
+
+.imgBox img {
+	width: 100%;
+	height: 100%;
+}
+#modal_file {
+	position: fixed;
+	top: 40%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 600px;
+	padding: 50px;
+	box-shadow: 0 5px 30px rgba(0, 0, 0, .30);
+	background: #fff;
+	visibility: hidden;
+	opacity: 0;
+	transition: 0.5s;
+	padding: 0;
+}
+#modal_file.active {
+	top: 50%;
+	visibility: visible;
+	opacity: 1;
+	transition: 0.5s;
+	display: block;
+	height: 600px;
+	width: 700px;
+	border-radius: 50px;
+}
+#modal_file button {
+	border: 1px solid #8178d3;
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	color: #fff;
+	cursor: pointer;
+	background: #8178d3;
+	padding: 0;
+	transition: all 0.3s;
+	transform: translateY(-590px) translateX(580px);
+}
+#modal_file button:hover {
+	background: #fff;
+	color: #8178d3;
+}
+#fileviewList {
+	overflow-x: hidden;
+	overflow-y: auto;
+	height: 500px;
+	width: 110px;
+	background: #f3f4f8;
+	border: 2px solid #8178d3;
+	border-right: none;
+}
+#fileviewList li {
+	font-family: sans-serif;
+	color: #000;
+	list-style: none;
+}
+#fileviewList li:hover {
+	background: rgba(0, 0, 0, 0.5);
+}
+#fileviewList li:hover .li_close{
+	transition: 0.5s;
+	display: block;
+}
+#fileview .li_close {
+	transform: translateY(-95px) translateX(76px);
+	border: 1px solid #8178d3;
+	background: #fff;
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	color: #8178d3;
+	text-align: center;
+	font-size: 10px;
+	font-weight: bold;
+	line-height: 18px;
+	cursor: pointer;
+	padding: 0;
+	margin: 0;
+	display: none;
+	transition: 0.5s;
 }
 </style>
 </head>
@@ -229,16 +386,20 @@ body {
 <div class="formBx">
 <form>
 <div class="inputBox">
-<textarea required="required"></textarea>
 <span>Type Your Comment Here...</span>
+<textarea required="required" rows="7"></textarea>
 </div>
-
-<div class="inputBox">
-<input type="submit" value="Send" name="">
-<input type="button" value="Close" name="">
+<div class="choose_file">
+<label for="choose_file"> 
+<input type="file" id="choose_file" multiple accept=".jpg,.jpeg,.png,.gif"> <span>Choose Files</span>
+</label>
 </div>
+<input type="submit" value="Send" >
+<input type="button" value="Close" id="modal_close">
 </form>
 </div>
+</div>
+<div id="modal_file">
 <div class="image-preview" id="imagePreview">
 <div id="fileviewList">
 <ul id="fileview">
@@ -248,9 +409,16 @@ body {
 	<img src="">
 </div>
 </div>
+<button type="button" id="fileadd"><i class="fa fa-plus" ></i></button>
+<button type="button" id="fileend"><i class="fa fa-arrow-left"></i></button>
 </div>
 <script type="text/javascript">
 $(function () {
+	
+	$("#modal_close").on("click", function(e) {
+		toggle_modal();
+	})
+	
 	$('.toggle').dblclick(function () {
 		$('.toggle').toggleClass('active');
 		$('ul').toggleClass('active');
@@ -258,14 +426,94 @@ $(function () {
 	$('.draggable').draggable();
 	$(".board_plus").on("click", function(e) {
 		e.preventDefault();
-		toggle();
+		toggle_modal();
 	})
-	function toggle() {
+	function toggle_modal() {
 		var container = $(".container");
 		var modal = $("#modal");
 		container.toggleClass("active");
 		modal.toggleClass("active");
 	}
+	
+	var fileList = [];
+	var fileview = $("#fileview");
+	var filebtn = $("#choose_file");
+	var idx = 0;
+	var modal_state = false;
+	
+	
+	filebtn.on("change", function(e) {
+		 files = filebtn[0].files;
+	 	 $.each(files, function(i, val) {
+	 		console.log(val);
+	 	 	fileList.push(val);
+	 	 })
+	 	 
+	 	if(!modal_state) {
+	 		modal_state = true;
+	 		toggle_file();
+	 	}
+	 	view_fileList();
+	 });
+	
+	function toggle_file() {
+		var modal_file = $("#modal_file");
+		var modal = $("#modal");
+		modal_file.toggleClass("active");
+		modal.toggleClass("active");
+	}
+	
+	function view_fileList() {
+		if(fileList.length == 0) {
+			toggle_file();
+			modal_state = false;
+			return;
+		}
+		fileview.html("");
+		$.each(fileList, function(i, val) {
+			var reader = new FileReader();
+			reader.onload = function (e) {			
+				console.log(e);
+				fileview.append("<li><a href='"+i+"' target ='imgBox'><img src='"+e.target.result+"' class='image-preview__image'></a><button class='li_close'>X</button></li>")
+				if (idx == i) {
+					$(".imgBox img").attr("src", e.target.result);
+				}
+			}
+			reader.readAsDataURL(val);
+		})
+	} 
+	
+	$(document).on("click", "#fileview a", function (e) {
+		e.preventDefault();
+		console.log(fileList);
+		var file = fileList[$(this).attr("href")];
+		console.log(file);
+		idx = $(this).parent().index();
+		var reader = new FileReader();
+		reader.onload = function (e) {			
+			console.log(e);
+			$(".imgBox img").attr("src", e.target.result);
+		}
+		reader.readAsDataURL(file);
+	})
+	
+	$("#fileend").on("click", function () {
+		toggle_file();
+		modal_state = false;
+	})
+	
+	$(document).on("click", "#fileview .li_close", function (e) {
+		console.log(fileList);
+		console.log($(this).parent().index());
+		if(idx == $(this).parent().index()) idx = idx-1;
+		if($(this).parent().index() == 0) idx = 0;
+		fileList.splice($(this).parent().index(), 1);
+		view_fileList();
+	})
+	
+	$("#fileadd").on("click", function () {
+		filebtn.click();
+	})
 })
 </script>
 </body>
