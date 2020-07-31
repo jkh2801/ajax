@@ -1,5 +1,5 @@
 {
-  "ecmaVersion": 5,
+  "ecmaVersion": 6,
   "plugins": {
     "guess-types": {
       
@@ -19,7 +19,13 @@
     "bootstrap": {
       
     },
+    "jquery-ui1-12": {
+      
+    },
     "jquery-extension": {
+      
+    },
+    "jquery-mobile1.5": {
       
     }
   },
