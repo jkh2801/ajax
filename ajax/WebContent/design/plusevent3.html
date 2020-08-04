@@ -385,6 +385,8 @@ ul#fileview li img {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	position: relative;
+	top: -20px;
 }
 #slideshow img {
 	top: 0;
@@ -397,6 +399,41 @@ ul#fileview li img {
 }
 #slideshow img.active {
 	opacity: 1;
+}
+.slider_file .arrow {
+	width: 30px;
+	height: 30px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition : 0.5s;
+}
+.slider_file .arrow:hover {
+	background: rgba(0, 0, 0, 0.5);
+}
+.slider_file #arrow-left {
+	transform: translateY(-63px);
+}
+.slider_file #arrow-right {
+	transform: translateY(-93px) translateX(400px);
+}
+.slider_file #file_modal {
+	position: relative;
+	top: -165px;
+	left: 405px;
+	border: 1px solid #8178d3;
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	color: #fff;
+	cursor: pointer;
+	background: #8178d3;
+	padding: 0;
+	transition: all 0.3s;
+}
+.slider_file #file_modal:hover {
+	background: #fff;
+	color: #8178d3;
 }
 </style>
 </head>
@@ -427,8 +464,9 @@ ul#fileview li img {
 <div class="slider_file">
 <div id="slideshow">
 </div>
-<div><a><i class="fa fa-angle-left" id="left"></i></a></div>
-<div><a><i class="fa fa-angle-right" id="right"></i></a></div>
+<div class="arrow" id="arrow-left"><a><i class="fa fa-angle-left" id="left"></i></a></div>
+<div class="arrow" id="arrow-right"><a><i class="fa fa-angle-right" id="right"></i></a></div>
+<button type="button" id="file_modal"><i class="fa fa-arrow-right"></i></button>
 </div>
 </div>
 <input type="submit" value="Send" >
@@ -497,22 +535,25 @@ $(function () {
 	 	view_fileList();
 	 });
 	
-	$("#left").on("click", function () {
+	$("#arrow-left").on("click", function () {
 		var slides = $('#slideshow img');
+		var imgNum = $('#imgNum');
 		slides.get(sdx).classList.remove('active');
 		sdx = (sdx + slides.length -1) % slides.length;
 		slides.get(sdx).classList.add('active');
-		slides.get(sdx).style.top = (sdx * -100)+"%";
-		console.log(sdx);
+		imgNum.html((sdx+1) +" / " + fileList.length);
 	})
 	
-	$("#right").on("click", function () {
+	$("#arrow-right").on("click", function () {
 		var slides = $('#slideshow img');
+		var imgNum = $('#imgNum');
+		console.log("right");
+		console.log(slides);
+		console.log(sdx);
 		slides.get(sdx).classList.remove('active');
 		sdx = (sdx +1) % slides.length;
 		slides.get(sdx).classList.add('active');
-		slides.get(sdx).style.top = (sdx * -100)+"%";
-		console.log(sdx);
+		imgNum.html((sdx+1) +" / " + fileList.length);
 	})
 	
 	function toggle_file() {
@@ -523,14 +564,17 @@ $(function () {
 			$(".choose_file label").hide();
 			slider_file.show();
 			slideshow.html("");
+			slideshow.append("<span id='imgNum'>1 / "+fileList.length+"</span>");
+			var n = 0;
 			$.each(fileList, function (i, val) {
 				var reader = new FileReader();
 				reader.onload = function (e) {	
-					if (i == 0) {
-						slideshow.append("<div><img src='"+e.target.result+"' class='active'></div>");	
+					if (n == 0) {
+						slideshow.append("<div><img src='"+e.target.result+"' class='active' style='top: 0%'></div>");	
 					}else{
-						slideshow.append("<div><img src='"+e.target.result+"' class=''></div>");
+						slideshow.append("<div><img src='"+e.target.result+"' class='' style='top: "+(n * -100)+"%'></div>");
 					}
+						n += 1;
 				}
 				reader.readAsDataURL(val);
 			})
@@ -539,6 +583,7 @@ $(function () {
 		var modal = $("#modal");
 		modal_file.toggleClass("active");
 		modal.toggleClass("active");
+		sdx = 0;
 	}
 	
 	function view_fileList() {
@@ -579,6 +624,12 @@ $(function () {
 		toggle_file();
 		modal_state = false;
 	})
+	
+	$("#file_modal").on("click", function () {
+		toggle_file();
+		modal_state = true;
+	})
+	
 	
 	$(document).on("click", "#fileview .li_close", function (e) {
 		console.log(fileList);
