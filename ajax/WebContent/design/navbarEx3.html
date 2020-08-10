@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>navbarEx3</title>
+<style type="text/css">
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+body {
+	margin: 0;
+	padding: 0;
+	font-family: 'Poppins', sans-serif;
+	height: 100vh;
+}
+header  {
+	width: 100%;
+	background: #000;
+}
+header ul {
+	display: flex;
+	justify-content: flex-end;
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0;
+}
+header ul li {
+	list-style: none;
+	position: relative;
+	padding: 10px 0;
+	transition: 0.5s;
+	box-sizing: border-box;
+	border-right: 1px solid rgba(255,255,255,.2);
+}
+header ul li:hover {
+	background: #2196f3;
+}
+header ul li:last-child {
+	border-right: none;
+}
+header ul li a {
+	text-decoration: none;
+	padding: 0 20px;
+	color: #fff;
+}
+header ul li ul{
+	position: absolute;
+	top: 44px;
+	left: 0;
+	background: #000;
+	display: block;
+	width: 200px;
+	transition: 0.5s;
+	opacity: 0;
+	visibility:  hidden;
+}
+header ul li:hover ul {
+	opacity: 1;
+	visibility:  visible;
+}
+header ul li ul li {
+	border-right: none;
+	border-bottom: 1px solid rgba(255,255,255,.2);
+}
+@media (max-width: 768px) {
+	header ul {
+		display: block;
+	}
+	header ul li {
+		display: block;
+	}
+	header ul li ul {
+		width: 100%;
+		z-index: 1;
+	}
+}
+</style>
+</head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a href="#">Home</a></li>
+<li><a href="#">About</a></li>
+<li><a href="#">Services</a></li>
+<li><a href="#">Team</a>
+<ul>
+<li><a href="#">Submenu 1</a></li>
+<li><a href="#">Submenu 2</a></li>
+<li><a href="#">Submenu 3</a></li>
+<li><a href="#">Submenu 4</a></li>
+</ul>
+</li>
+<li><a href="#">Portfolio</a></li>
+<li><a href="#">Contact</a></li>
+</ul>
+</nav>
+</header>
+</body>
+</html>
