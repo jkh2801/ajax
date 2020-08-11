@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>MarkDown Ex1</title>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+<style type="text/css">
+textarea {
+	width: 70%;
+	height: 50%;
+}
+</style>
+</head>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+<body>
+	<textarea rows="5" cols="5" id="area"></textarea>
+	<button type="button" id="button">Click</button>
+	<button type="button" id="rewrite">Rewrite</button>
+	<script>
+		var simplemde = new SimpleMDE({ element: $("#area")[0] });
+		$("#button").on("click", function () {
+			console.log(simplemde.value());
+		})
+		$("#rewrite").on("click", function () {
+			simplemde.value("#안녕");
+		})
+	</script>
+</body>
+</html>
