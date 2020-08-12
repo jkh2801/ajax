@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>SearchForm Ex2</title>
+<style type="text/css">
+body {
+	margin: 0;
+	padding: 0;
+}
+.search {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 80px;
+	height: 80px;
+	background: #fff;
+	box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+	border-radius: 4px;
+	transition: width 0.5s;
+	overflow: hidden;
+}
+.search.active {
+	width: 600px;
+}
+.search input {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	width: calc(100% - 90px);
+	height: 60px;
+	border: none;
+	outline: none;
+	font-size: 36px;
+	padding: 0 10px;
+	color: #666;
+}
+.icon {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	width: 60px;
+	height: 60px;
+	cursor: pointer;
+	transition: 0.5s;
+	border-radius: 4px;
+}
+.icon:before {
+	content: '';
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	width: 24px;
+	height: 24px;
+	background: transparent;
+	border: 2px solid #262626;
+	border-radius: 50%;
+	transition: 0.5s;
+}
+.search.active .icon {
+	background: #ff355a;
+}
+.search.active .icon:before {
+	content: '';
+	position: absolute;
+	top: 7px;
+	left: 13px;
+	width: 18px;
+	height: 30px;
+	background: transparent;
+	border: none;
+	border-radius: 0;
+	transition: 0.5s;
+	border-right: 2px solid #fff;
+	transform: rotate(45deg);
+}
+
+.icon:after {
+	content: '';
+	position: absolute;
+	top: 25px;
+	left: 35px;
+	width: 18px;
+	height: 18px;
+	background: transparent;
+	border-left: 2px solid #262626;
+	border-radius: 0;
+	transform: rotate(-45deg);
+	transition: 0.5s;
+}
+.search.active .icon:after {
+	content: '';
+	position: absolute;
+	top: 20px;
+	left: 13px;
+	width: 18px;
+	height: 30px;
+	background: transparent;
+	border: none;
+	border-radius: 0;
+	transition: 0.5s;
+	border-right: 2px solid #fff;
+	transform: rotate(-45deg);
+}
+</style>
+</head>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<body>
+<div class="search">
+<input type="text" placeholder="Search...">
+<div class="icon"></div>
+</div>
+<script type="text/javascript">
+	$(function(){
+		$(".icon").click(function() {
+			console.log("?????")
+			$(".search").toggleClass('active')
+		})
+	})
+</script>
+</body>
+</html>
