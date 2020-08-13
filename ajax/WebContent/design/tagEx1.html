@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Tag Ex1</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <style type="text/css">
 @import url('https://kodhus.com/kodhus-ui/kodhus-0.1.0.min.css');
 body {
@@ -59,7 +60,7 @@ body {
   <br />
   <br />
   <div class="tag-container">
-    <input  />  
+    <input/>  
   </div>
   
 </div>
@@ -75,8 +76,8 @@ function createTag(label) {
   const span = document.createElement('span');
   span.innerHTML = label;
   const closeIcon = document.createElement('i');
-  closeIcon.innerHTML = 'X';
-  closeIcon.setAttribute('class', 'material-icons');
+  closeIcon.innerHTML = '';
+  closeIcon.setAttribute('class', 'fa fa-times');
   closeIcon.setAttribute('data-item', label);
   div.appendChild(span);
   div.appendChild(closeIcon);
@@ -104,6 +105,7 @@ input.addEventListener('keyup', (e) => {
       
       addTags();
       input.value = '';
+      console.log(tags);
     }
 });
 document.addEventListener('click', (e) => {
