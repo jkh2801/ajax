@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>RegisterForm Ex1</title>
+<style type="text/css">
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: impact;
+	font-size: 16px;
+}
+
+.page-wrap {
+	max-width: 100%;
+	min-height: 100vh;
+	position: relative;
+	z-index: 1
+}
+
+.pagewrap-overlay {
+	background: #c92;
+	position: absolute;
+	z-index: -1;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0.8;
+}
+
+.content {
+	width: 600px;
+	margin: 0 auto;
+	padding: 10vh 0;
+}
+
+header {
+	background: #fff;
+	width: 100%;
+	height: 150px;
+	text-align: center;
+	position: relative;
+}
+
+header:after {
+	content: '';
+	position: absolute;
+	bottom: -11px;
+	left: 0;
+	width: 100%;
+	height: 30px;
+	background: #fff;
+	z-index: 1;
+	transform: skewY(2deg);
+	s
+}
+
+header h1 {
+	text-transform: uppercase;
+	font-size: 30px;
+	letter-spacing: 2px;
+}
+
+.header-content {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.taxi {
+	font-weight: 600;
+}
+
+section {
+	position: relative;
+	height: 500px;
+}
+
+form {
+	margin: 0 auto;
+	max-width: 100%;
+	background: #222;
+	height: 100%;
+	opacity: 0.8;
+	padding: 60px 0;
+	box-shadow: 0 19px 39px rgba(0, 0, 0, 0.3), 0 15px 12px
+		rgba(0, 0, 0, 0.22);
+}
+
+input, select {
+	display: block;
+	width: 70%;
+	height: 60px;
+	background: transparent;
+	border: 1px solid #555;
+	border-radius: 5px;
+	margin: 0 auto;
+	font-size: 18px;
+	color: #fff;
+	letter-spacing: 2px;
+	padding-left: 20px;
+	margin-top: 20px;
+}
+
+input:focus {
+	outline: none;
+}
+
+::-webkit-input-placeholder {
+	color: #fff;
+}
+
+select {
+	-moz-apperance: none;
+	-webkit-apperance: none;
+}
+
+select::-ms-expand {
+	display: none;
+}
+
+button {
+	background: linear-gradient(to right, #fa1, #fc1);
+	width: 30%;
+	height: 65px;
+	border: none;
+	border-radius: 5px;
+	margin: 0 auto;
+	font-size: 15px;
+	color: #fff;
+	letter-spacing: 3px;
+	display: block;
+	text-transform: uppercase;
+	font-weight: 900;
+	position: relative;
+	top: -30px;
+	box-shadow: 0 19px 39px rgba(0, 0, 0, 0.3), 0 15px 12px
+		rgba(0, 0, 0, 0.22);
+	cursor: pointer;
+}
+</style>
+</head>
+<body>
+	<div class="pagewrap">
+		<div class="pagewrap-overlay"></div>
+		<div class="content">
+			<header>
+				<div class="header-content">
+					<h1>
+						<span class="taxi">Register</span>
+					</h1>
+					<div class="slanted"></div>
+				</div>
+			</header>
+			<section>
+				<form>
+					<div class="name-input">
+						<input type="text" class="name" placeholder="Name">
+					</div>
+					<div class="username-input">
+						<input type="text" class="username" placeholder="Username">
+					</div>
+					<div class="select-input">
+						<select disabled="disabled">
+							<option>Car Type</option>
+						</select>
+					</div>
+					<div class="id-input">
+						<input type="text" class="id" placeholder="ID">
+					</div>
+				</form>
+			</section>
+			<button>Next</button>
+		</div>
+	</div>
+</body>
+</html>
