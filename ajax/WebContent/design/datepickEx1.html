@@ -162,6 +162,8 @@ h1 span {
 	prev_mth_element.addEventListener('click', goToPrevMonth);
 
 	function toggleDatePicker (e) {
+		console.log(e.path);
+		console.log(!checkEventPathForClass(e.path, 'dates'));
 		if (!checkEventPathForClass(e.path, 'dates')) {
 			dates_element.classList.toggle('active');
 		}
@@ -223,6 +225,8 @@ h1 span {
 	function checkEventPathForClass (path, selector) {
 		for (let i = 0; i < path.length; i++) {
 			if (path[i].classList && path[i].classList.contains(selector)) {
+			console.log(path[i]);
+			console.log(path[i].classList.contains(selector));
 				return true;
 			}
 		}
