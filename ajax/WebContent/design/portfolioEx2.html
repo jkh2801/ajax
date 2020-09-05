@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Portfolio Ex2</title>
 <style type="text/css">
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
@@ -135,13 +136,116 @@ header ul li a {
 	margin: 5px 0;
 	transform: scale(0.6);
 }
+@media (max-width: 991px) {
+	section {
+	padding: 40px;
+	padding-bottom: 140px;
+	}
+	header {
+		padding: 20px 40px;
+	}
+	header .logo {
+		position: relative;
+		max-width: 60px;
+	}
+	header ul {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: #fff;
+		z-index: 1;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		transition: 0.2s;
+		visibility: hidden;
+		opacity: 0;
+	}
+	header ul.active {
+		visibility: visible;
+		opacity: 1;
+	}
+	header ul li a {
+		display: inline-block;
+		color: #111;
+		font-weight: 400;
+		margin-left: 0;
+		text-decoration: none;
+		font-size: 2em;
+		margin: 10px 0;
+	}
+	header ul li a:hover {
+		color: #ed0223;
+	}
+	.toggleMenu {
+		position: relative;
+		width: 40px;
+		height: 40px;
+		background: url(img2/menu.png);
+		background-position: center;
+		background-size: 30px;
+		background-repeat: no-repeat;
+		z-index: 2;
+		cursor: pointer;
+	}
+	.toggleMenu.active {
+		background: url(img2/close.png);
+		background-position: center;
+		background-size: 25px;
+		background-repeat: no-repeat;
+		filter: invert(1);
+	}
+	.content {
+		flex-direction: column;
+		margin-top: 80px;
+	}
+	.content .textBox {
+		position: relative;
+		max-width: 100%;
+		padding-right: 20px;
+	}
+	.content .textBox h2 {
+		font-size: 3em;
+	}
+	.content .textBox a {
+		font-size: 14px;
+		padding: 8px 15px;
+	}
+	.content .imgBox {
+		width: 100%;
+		display: flex;
+		padding-right: 0;
+		margin-top: 50px;
+		justify-content: center;
+	}
+	.content .imgBox img {
+		max-width: 150px;
+	}
+	.thumb li img {
+		max-width: 30px;
+	}
+	.sci {
+	position: absolute;
+	top: 50%;
+	right: 0;
+	tranform:  translateY(-50%);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 50px;
+	background: rgba(0,0,0,0.2);
+}
+}
 </style>
 </head>
 <body>
 	<section class="sec">
 		<header>
 			<a href="#"><img src="img2/logo.png" class="logo"></a>
-			<ul>
+			<div class="toggleMenu" onclick="menuToggle()"></div>
+			<ul class="navigation">
 				<li><a href="#">Home</a></li>
 				<li><a href="#">Products</a></li>
 				<li><a href="#">What's New</a></li>
@@ -179,6 +283,13 @@ header ul li a {
 		function changeBgColor(c) {
 			const sec = document.querySelector('.sec');
 			sec.style.background = c;
+		}
+		
+		function menuToggle() {
+			const toggleMenu = document.querySelector('.toggleMenu');
+			const navigation = document.querySelector('.navigation');
+			toggleMenu.classList.toggle('active');
+			navigation.classList.toggle('active');
 		}
 	</script>
 </body>
