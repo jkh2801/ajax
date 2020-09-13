@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Cloud Ex1</title>
+<style type="text/css">
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+* {
+	font-family: 'Poppins', sans-serif;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+.banner {
+	position: relative;
+	width: 100%;
+	height: 100vh;
+	background: url(img2/img5.jpg);
+	background-size: cover;
+	background-position: bottom;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.banner #text {
+	position: relative;
+	font-size: 12em;
+	color: #fff;
+}
+.banner .clouds {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	pointer-events: none;
+}
+.banner .clouds img {
+	position: absolute;
+	bottom: 0;
+	max-width: 100%;
+	animation: animate calc(3s * var(--i)) linear infinite;
+}
+@keyframes animate {
+	0% {
+		opacity: 0;
+		transform: scale(1);
+	}
+	25%, 75% {
+		opacity: 1;
+	}
+	100% {
+		oipacity: 0;
+		transform: scale(3);
+	}
+}
+section {
+	position: relative;
+	padding: 75px 100px;
+}
+section h2 {
+	position: relative;
+	font-size: 2.5em;
+	margin-bottom: 20px;
+	
+}
+</style>
+</head>
+<body>
+	<div class="banner">
+		<h2 id="text">Heaven</h2>
+		<div class="clouds">
+			<img src="img2/cloud1.png" style="--i:1;">
+			<img src="img2/cloud2.png" style="--i:2;">
+			<img src="img2/cloud3.png" style="--i:3;">
+			<img src="img2/cloud4.png" style="--i:4;">
+			<img src="img2/cloud5.png" style="--i:5;">
+			<img src="img2/cloud1.png" style="--i:10;">
+			<img src="img2/cloud2.png" style="--i:9;">
+			<img src="img2/cloud3.png" style="--i:8;">
+			<img src="img2/cloud4.png" style="--i:7;">
+			<img src="img2/cloud5.png" style="--i:6;">s
+		</div>
+	</div>
+	<section>
+		<h2>Realistic Cloud Banner Parallax Effects</h2>
+		<p>Realistic Cloud Banner Parallax Effects
+		Realistic Cloud Banner Parallax Effects
+		Realistic Cloud Banner Parallax Effects
+		Realistic Cloud Banner Parallax Effects
+		Realistic Cloud Banner Parallax Effects
+		Realistic Cloud Banner Parallax Effects
+		Realistic Cloud Banner Parallax Effects
+		Realistic Cloud Banner Parallax Effects
+		Realistic Cloud Banner Parallax Effects
+		Realistic Cloud Banner Parallax Effects
+		Realistic Cloud Banner Parallax Effects
+		Realistic Cloud Banner Parallax Effects
+		Realistic Cloud Banner Parallax Effects
+		Realistic Cloud Banner Parallax Effects
+		Realistic Cloud Banner Parallax Effects
+		Realistic Cloud Banner Parallax Effects
+		Realistic Cloud Banner Parallax Effects
+		Realistic Cloud Banner Parallax Effects
+		Realistic Cloud Banner Parallax Effects
+		Realistic Cloud Banner Parallax Effects
+		Realistic Cloud Banner Parallax Effects
+		Realistic Cloud Banner Parallax Effects
+		Realistic Cloud Banner Parallax Effects
+		Realistic Cloud Banner Parallax Effects
+		Realistic Cloud Banner Parallax Effects
+		Realistic Cloud Banner Parallax Effects
+		Realistic Cloud Banner Parallax Effects
+		Realistic Cloud Banner Parallax Effects
+		Realistic Cloud Banner Parallax Effects
+		Realistic Cloud Banner Parallax Effects
+		Realistic Cloud Banner Parallax Effects
+		Realistic Cloud Banner Parallax Effects
+		Realistic Cloud Banner Parallax Effects
+		Realistic Cloud Banner Parallax Effects
+		Realistic Cloud Banner Parallax Effects
+		Realistic Cloud Banner Parallax Effects
+		Realistic Cloud Banner Parallax Effects
+		Realistic Cloud Banner Parallax Effects
+		Realistic Cloud Banner Parallax Effects</p>
+	</section>
+	<script type="text/javascript">
+		let text = document.getElementById('text');
+		window.addEventListener('scroll', function () {
+			let value = window.scrollY;
+			text.style.marginBottom = value * 2 + 'px';
+		})
+	</script>
+</body>
+</html>
