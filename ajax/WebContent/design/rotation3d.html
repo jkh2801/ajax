@@ -21,7 +21,8 @@ body {
 	width: 200px;
 	height: 200px;
 	transform-style: preserve-3d;
-	animation: animate 20s linear infinite;
+	/* animation: animate 20s linear infinite; */
+	transform: perspective(1000px) rotateY(0deg);
 }
 
 @keyframes animate{
@@ -64,7 +65,13 @@ body {
 	<span style="--i:6"><img src="img/paker.jpg"></span>
 	<span style="--i:7"><img src="img/solali.jpg"></span>
 	<span style="--i:8"><img src="img/win.jpg"></span>
-	
 </div>
+<script type="text/javascript">
+	let box = document.querySelector('.box');
+	window.onmousemove = function (e) {
+		let x = e.clientX / 3;
+		box.style.transform = "perspective(1000px) rotateY("+ x +"deg)";
+	}
+</script>
 </body>
 </html>
